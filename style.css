@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*              
+
+網頁的架構
+	<html>
+		<head></head>
+		<body>
+			<div id="wrap">
+				<div id="header"></div>
+				<div id="content">
+					<div id="left_content"></div>
+					<div id="right_content"></div>
+				</div>
+				<div id="footer"></div>
+			</div>
+		</body>
+	</html>
+	
+
+*/
+
+body {
+	margin: 0;
+	/*font-family: "Times New Roman", Times, serif;*/
+	 font-family: Verdana, Arial, Sans-serif; line-height: 22px; font-size: 11pt; 
+}
+
+h4 {
+	padding:0px;
+	margin-bottom:5px;
+	margin-top:5px;
+}
+
+br{
+}
+
+table {
+	margin-top: 18px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* 整個網頁外圍 */
+#wrap {
+	width: 800px;
+	margin: 0 auto; /* 置中 */
+}
+
+#header {
+	height: 80px;
+}
+
+#content {
+}
+
+#content #left_content{
+	width: 200px;
+	float:right;
+}
+
+#content #right_content{
+/*	margin-bottom: 10px;*/
+	width: 590px;
+	float:left;
+}
+
+
+/* 左邊內容欄位標題 */
+#left_content th, #right_content th{
+	text-align:left;
+	background-color: #639cff;
+	padding: 5px;
+}
+
+#left_content td {
+	background-color: #ceefff;
+	padding: 5px;
+}
+
+#left_content td:hover {
+	background-color: #e7ffd6;
+	padding: 5px;
+}
+
+#left_content a, #left_content a:visited, #left_content a:hover
+{
+	text-decoration:none;
+	color:#000000;
+}
+
+#footer {
+	font-size: 12px;
+	margin-top: 10px;
+	border-top: 2px #CCCCCC solid;
+	clear:both;
+	height: 100px;
+	padding: 5px;
+}
+
+/* 紅色的字 */
+.red {
+	color: #FF0000;
+}
+
+/* 右邊內容欄位標題 */
+.right_content_title {
+	border: 1px #CCCCCC solid;
+	font-size: 14pt;
+	font-weight: normal;
+}
+.left_content_title {
+	border: 1px #CCCCCC solid;
+	font-size: 14pt;
+	font-weight: normal;
+}
+
+/* 右邊內容 */
+.right_content_body {
+	padding: 8px;
+	border-left: 1px #CCCCCC solid;
+	border-right: 1px #CCCCCC solid;
+	border-bottom: 1px #CCCCCC solid;
+}

@@ -1,0 +1,301 @@
+﻿/* css Zen Garden submission - 'Kyoto Forest', by John Politowski, http://rpmdesignfactory.com/ */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+/* All associated graphics copyright 2007, John Politowski */
+
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the 
+   designer's written permission. However, feel free to study the CSS and use 
+   techniques you learn from it elsewhere. */
+
+
+/* basic elements */
+
+html {
+/*	margin: 2%;*/
+/*	padding: 0;*/
+}
+	
+body         { font-family: Verdana, Arial, Sans-serif; line-height: 22px; font-size: 12pt; 
+text-align: justify;
+               color:#666666;
+                 background-repeat: no-repeat; background-attachment: scroll; 
+                 background-position: top center ;margin-left: 2em;
+                /*background-color: #e6fad6;margin: 0; padding: 12px;*/
+       	}
+br{
+	margin-bottom:14px;
+	margin-top:14px;
+	line-height: 4px
+}
+/*body a:link, a:active, a:visited {
+	text-decoration: none;
+	color: #0000FF ;
+	font-weight: bold;
+	font-size: 17px;
+	font-style: italic;
+}*/
+
+/*body a:hover {
+	text-decoration:underline;
+}*/
+a{
+	font-family:inherit ; font-size: inherit;
+}
+a:link { text-decoration: none;  font-size: inherit;color:#0056CC; }
+a:visited { text-decoration: none; font-size: inherit;  color:#0056CC; }
+a:active { text-decoration: none;font-size: inherit;  color:#00994E; }
+a:hover { text-decoration: none; color:black; font-size: inherit; color:#00994E;}
+
+
+p{
+font-family: Verdana, Arial, Sans-serif;
+font-size: 12pt;
+width:650px;
+    text-indent:2em;
+ /*   margin-left:2em;
+	padding-left:2em;*/
+	margin-bottom:10px;
+	margin-top:10px;
+	margin-right:0cm;
+	margin-left:0cm;
+	
+}
+img{
+	margin-top: 0px;
+		margin-bottom: 0px;
+/*	padding-left:2em;*/
+/*	padding: 10px;*/
+	text-align:left;
+	border-style: solid;
+	border-width: 1px;
+	border-color:black;
+}
+
+h1 {
+font-family: inheritent;
+margin-left:0;
+color:#005782;
+}
+
+h2 {
+font-family: inheritent;
+font-size:large;
+width:600px;
+/*margin-left:10px;*/
+padding-left:4pt;
+padding-right:4pt;
+padding-top:2pt;
+padding-bottom:2pt;
+color:white;
+background-color:gray;
+
+/*background-color:#D5E4F4;
+color:gray;*/
+
+display:inline;
+}
+
+h3 {
+font-family: inheritent;
+width:400px;
+
+padding-left:4pt;
+padding-right:4pt;
+padding-top:2pt;
+padding-bottom:2pt;
+/*background-color:gray;*/
+color:white;
+background-color:#999999;
+
+display:inline;
+}
+
+
+h4 {
+font-family: inheritent;
+width:300px;
+padding-left:4pt;
+padding-right:4pt;
+/*margin-left:30px;*/
+font-size:large;
+color:gray;
+text-decoration:underline;
+display:inline;
+}
+
+
+ul {
+	list-style-position:outside;
+	padding-left: 0;
+	margin-left: 0;
+}
+
+ol{
+
+	font-size:inherit;
+	padding: 0;
+/*	margin: 6px;*/
+	margin-left: 30px;
+	list-style-type:disc;
+
+} 
+
+li{ 	
+
+			margin-top:4px;
+ }
+ 
+acronym {
+	border-bottom: none;
+}
+
+
+#sub_title{
+	  font-size:18px; font-weight:lighter;display:inline;
+	 	margin-left: 12pt;
+	 	color:navy;
+}
+
+
+
+/* content div's */
+.top {
+	padding:0;
+	border: 0;
+	width:20px;
+	height:18px;
+}
+.regulartext { 
+ text-decoration: none;
+ font-family: Verdana, Arial, Sans-serif; 
+ font-size: 14px;
+ color:#666666; }
+
+
+#beforeol {
+	font-size: 12pt; 
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-weight:normal;
+	font-style:normal;
+}
+
+#directory {
+	font-size: 12pt; 
+	text-decoration:none;
+	
+	padding: 0
+}
+
+
+#container   { width: 892px; background-image: 
+               url('cow.gif'); 
+               background-repeat: no-repeat; background-attachment: scroll; 
+               position: relative; margin: auto; background-position: 
+               top center }
+#intro{
+	width:892px;
+	height:451px;
+}
+
+#pageHeader  { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/header_what_about.gif'); 
+               background-repeat: no-repeat; background-attachment: scroll; 
+               height: 34px; overflow: hidden; position: absolute; top: 462px; 
+               left: 205px; width: 587px; background-position: top center }
+#pageHeader span{
+	display:none;
+}
+
+#quickSummary {
+	display:none;
+}
+
+#preamble{
+	padding:240px 100px 0 205px;
+}
+
+#preamble p.p1{
+	margin-top: 20px;
+}
+
+#supportingText { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/content_tile.jpg'); 
+               height: 100% }
+#explanation { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/content_bg_bottom.jpg'); 
+               background-repeat: no-repeat; background-attachment: scroll; 
+               height: 100%; padding-left: 205px; padding-right: 100px; 
+               padding-top: 50px; padding-bottom: 30px; background-position: 
+               top }
+#participation { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/header_participation.gif'); 
+               background-repeat: no-repeat; background-attachment: scroll; 
+               height: 100%; margin-left: 205px; margin-right: 100px; 
+               margin-top: 20px; margin-bottom: 30px; padding-top: 40px; 
+               background-position: top center }
+#benefits    { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/header_benefits.gif'); 
+               background-repeat: no-repeat; background-attachment: scroll; 
+               height: 100%; margin-left: 205px; margin-right: 100px; 
+               margin-top: 65px; margin-bottom: 30px; padding-top: 40px; 
+               background-position: top center }
+#requirements { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/header_requirements.gif'); 
+               background-repeat: no-repeat; background-attachment: scroll; 
+               height: 100%; border-bottom: 1px solid #720a0b; margin-left: 
+               205px; margin-right: 100px; margin-top: 65px; margin-bottom: 
+               30px; padding-left: 0; padding-right: 0; padding-top: 40px; 
+               padding-bottom: 15px; background-position: top center }
+#footer{
+	padding:10px;
+	text-align:center;
+}
+
+/* link list and extra div's */
+
+#linkList {
+	position:absolute;
+	width:150px;
+	top:603px;
+	z-index:5;
+	color: #666666;
+	font-size:10px;
+	left: 25px;
+	height:550px;
+	line-height:13px;
+}
+
+#linkList a:link {
+	color:#113c05;
+	text-decoration:none;
+}
+
+#linkList a:hover{
+	text-decoration: underline;
+}
+
+#lselect     { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/header_select_design.gif'); 
+               background-color: left; background-repeat: no-repeat; 
+               background-attachment: scroll; width: 150px; margin-left: 0; 
+               margin-right: 0; margin-top: 5px; margin-bottom: 0; 
+               padding-left: 0; padding-right: 0; padding-top: 20px; 
+               padding-bottom: 0; background-position: top }
+#larchives   { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/header_archives.gif'); 
+               background-color: left; background-repeat: no-repeat; 
+               background-attachment: scroll; width: 150px; margin-left: 0; 
+               margin-right: 0; margin-top: 10px; margin-bottom: 0; 
+               padding-left: 0; padding-right: 0; padding-top: 30px; 
+               padding-bottom: 0; background-position: top }
+#lresources  { background-image: 
+               url('../Local%20Settings/Temporary%20Internet%20Files/Content.IE5/1LA7HWCP/header_resources.gif'); 
+               background-color: left; background-repeat: no-repeat; 
+               background-attachment: scroll; width: 150px; margin-left: 0; 
+               margin-right: 0; margin-top: 15px; margin-bottom: 0; 
+               padding-left: 0; padding-right: 0; padding-top: 30px; 
+               padding-bottom: 0; background-position: top }
+     

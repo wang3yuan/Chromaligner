@@ -1,0 +1,3 @@
+<?
+print "lalala \n hahahaha";
+?>

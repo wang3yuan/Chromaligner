@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /><title>Correlation Optimized Warping</title>
+<style type="text/css">
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+
+<form id="form1" name="form1" method="post" enctype="multipart/form-data" action="scan_dad.php">
+<div id="right_content">
+        	<table border="0" width=595 cellpadding="5" cellspacing="1" style="margin-right:10px; ">
+			<tr><th class="right_content_title">Alignment with diode array detector</th></tr>
+    <tr>
+      <td class="right_content_body"><p align="left">
+        <label><span class="style1">Number of samples :
+        <input name="no_samples" type="text" id="no_samples" size="10" maxlength="2" />
+        </span></label>
+		</p>
+          <p class="style1">Number of segments to be aligned<a href="Spec/help.htm#NS_Example" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a>:
+              <label>
+              <input name="no_spikes" type="text" id="no_spikes" size="10" maxlength="2" />
+              </label>
+          </p>
+          <p class="style1">Total line number as the description in the DAD files<a href="Spec/help.htm#TL_Example" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a>:
+              <input name="no_des" type="text" id="no_des" size="10" maxlength="2" />
+          </p>
+          <p class="style1">Specify line number for WAVETABLE in the DAD files<a href="Spec/help.htm#LNW_Example" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a>:
+              <input name="position_of_wave" type="text" id="position_of_wave" size="10" maxlength="2" />
+          </p>
+          <p class="style1">Specify the wave length to be used for alignment<a href="Spec/help.htm#WL_Example" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a>:
+              <input name="wave_length" type="text" id="wave_length" size="10" maxlength="3" />
+          </p>
+          <p class="style1">
+            <span class="style1">
+            <label>Sampling frequency :
+              <input name="no_datapoints" type="text" id="no_datapoints" size="10" maxlength="10" />
+&nbsp;
+              data points /&nbsp; </label>
+            <label>
+            <input name="no_secs" type="text" id="no_secs" size="10" maxlength="10" /></label>
+    sec</span></p>
+    </br>
+	  <p style="font-style:italic;">
+		  You need to specify the starting and ending time<a href="Spec/help.htm#SE_Example" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a>
+		  in your parameter files<a href="Spec/help.htm#Acq" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a>.</br>
+		    However, if you would like to specify same starting and ending
+		    time for all the files in the analysis, please select the following
+		    options and fill in the starting and ending time.
+	    </p>
+          <p >
+            <span class="style1">
+            <label>
+            <input name="start_flag" type="checkbox" id="start_flag" value="yes" />
+            </label>
+	    Specify the starting time (Unit - minutes)<a href="Spec/help.htm#SE_Example" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a> :
+            <input name="start_time" type="text" id="start_time" size="10" maxlength="6" />
+            </span></p>
+          <p class="style1">
+            <span class="style1">
+            <label>
+            <input name="end_flag" type="checkbox" id="end_flag" value="yes" />
+            </label>
+            Specify the ending time (Unit - minutes)<a href="Spec/help.htm#SE_Example" target="_blank"><img src="styles/help.jpg" width="14" height="14" border="0" /></a> :
+            <input name="end_time" type="text" id="end_time" size="10" maxlength="6" />
+            </span></p>
+          <p class="style1">Target (Reference) file name :
+              <input name="target" type="text" id="target" size="15" maxlength="20" />
+          </p>
+	  <p >
+	  Archived file including one index file, one target file, samples to be
+	  aligned (raw data files), and parameter files corresponding to each
+	  raw data
+              <input type="hidden" name="MAX_FILE_SIZE" value="20971520" />
+              
+              <input name="Samples" type="file" id="Samples" value="upload" size="10" />
+          </p>
+          <p class="style1">
+            <span class="style1">
+            <input type="submit" value="Submit" name="B1" />
+            <input type="reset" value="Reset" name="B2" />
+            </span></p></td>
+      </tr>
+  </table>
+</div>
+</form>
+
+
+
+
+
+</body>
+</html>

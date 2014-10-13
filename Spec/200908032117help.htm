@@ -1,0 +1,887 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<link rel="stylesheet" type="text/css" href="spec.css">
+<script type="text/javascript" language="JavaScript"><!--
+function HideContent(d) {
+document.getElementById(d).style.display = "none";
+}
+function ShowContent(d) {
+document.getElementById(d).style.display = "block";
+}
+function ReverseDisplay(d) {
+if(document.getElementById(d).style.display == "none") { document.getElementById(d).style.display = "block"; }
+else { document.getElementById(d).style.display = "none"; }
+}
+//--></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Chromaligner help page</title>
+<style type="text/css">
+</style>
+</head>
+
+<body>
+<a name="top"><h1>Chromaligner help</h1></a>
+<p>
+This document provides detailed instruction for preparing the files,
+and steps to run Chromaligner.  Chromaligner requires three files,
+data file, parameter file, and index file for running alignment
+algorithms in chromatograms. Due to the different output file format
+provided by different equipments, users need to follow Chromaligner
+format (<b><span style="color:black">highlighted in black</span></b>) to run it successfully.
+<br></br>
+</p>
+
+<div id="directory">
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse ; background-color:white" >
+  <tr>
+    <td width="650" style="height: 147px">
+    <ol style="list-style-type:disc; font-size:12pt;">  	
+	<li><a href="#Overview">Chromaligner Overview</a></li>
+	
+            	<li><a href="#Req_Files">Required files for Chromaligner</a></li>
+            	  <ol style="list-style-type:none; ">
+				           	<li><a href="#Extension">File extension</a></li>
+   							<li><a href="#Raw_Prepare">Preparing RAW data for different alignment methods</a></li>					    	
+							<ol style="list-style-type:none; ">	
+							    <li><a href="#RAW_DATA_Format1">Alignment without any constraints</a></li>
+							    <li><a href="#RAW_DATA_Format2">Auto alignment with user-specified peaks</a></li>
+   								<li><a href="#RAW_DATA_Format3">Auto alignment in different segments</a></li>					    	
+								<li><a href="#RAW_DATA_Format4">Auto alignment with diode array detector data</a></li>					    	
+						    </ol>
+						    <li><a href="#Acq">Preparing parameter files for different alignment methods</a></li>
+   						    <ol style="list-style-type:none;">
+   								<li><a href="#Time_Interval_Format1">Alignment without any constraints</a></li>
+							    <li><a href="#Time_Interval_Format2">Auto alignment with user-specified peaks</a></li>
+   								<li><a href="#Time_Interval_Format3">Auto alignment in different segments</a></li>					    	
+								<li><a href="#Time_Interval_Format4">Auto alignment with diode array detector data</a></li>
+								<li><a href="#TIME_FileFormat">File format and naming rules</a></li>
+						    </ol>
+
+						    <li><a href="#File_Des">Index file</a></li>	
+						    <ol style="list-style-type:none; ">
+   								<li><a href="#Index_FileFormat">File format and naming rules</a> <a href="#TIME_FileFormat">
+								</a></li>		    	
+						    </ol>
+		 								    	
+				  </ol>
+    			<li><a href="#Prepare_ForRun">Preparing for running Chromaligner</a></li>
+	            	<ol style="list-style-type:none; ">
+		            	<li><a href="#UP_Archive">Archive required files in the ZIP files</a></li>
+		            	<li><a href="#EX_UI_Setting">Example files and Chromaligner webpage interface settings</a></li>					    						    	
+						    <ol style="list-style-type:none; ">			    
+   								<li><a href="#EX_1">Alignment without any constraints</a></li>
+							    <li><a href="#EX_2">Auto alignment with user-specified peaks</a></li>
+   								<li><a href="#EX_3">Auto alignment in different segments</a></li>					    	
+								<li><a href="#EX_4">Auto alignment with diode array detector data</a></li>
+					    						    	
+						    </ol>
+	            	</ol>
+	           	<li><a href="#Output">Chromaligner export files</a></li>
+	            	<ol style="list-style-type:circle; ">
+						   <ol style="list-style-type:none; ">
+   							<li><a href="#RTI_files">Retention time to intensity files after alignment</a></li>					    						    	
+   							<li><a href="#Chromatogram">Chromatograms (before and after alignment)</a></li>					    						    	
+   							<li><a href="#FULL_Data">Full data</a></li>					    						    	
+						    </ol>
+	            	</ol>
+	           	<li><a href="#FAQs">FAQs</a></li>
+	           	<ol style="list-style-type:circle; ">
+		           	<ol style="list-style-type:none; ">
+							<li><a href="#convert">How to convert a file to txt format</a></li>					    	
+							<li><a href="#SSSE_Example">How to specify time points for all chromatograms at once </a></li>					    	
+							<li><a href="#NSP_Example">What is the &quot;number of spike-peaks&quot; </a></li>	
+							<li><a href="#NS_Example">What is the &quot;number of segments to be aligned&quot; </a></li>	
+							<li><a href="#TL_Example">What is the &quot;total line number as 
+							the description in the DAD files&quot; </a></li>
+							<li><a href="#LNW_Example">What is the &quot;line number for WAVETABLE in the DAD files&quot; </a></li>
+							<li><a href="#WL_Example">What is the &quot;the wave 
+							length to be used for alignment&quot; </a></li>
+							<li><a href="#SE_Example">What is the starting time and ending time in a chromatogram </a></li>					    	
+	    			</ol>
+				</ol>
+
+	</ol>
+    </td>
+  </tr>
+</table>
+</div>
+
+
+<p><br></br></p>
+
+<br></br>
+
+<a name="Overview"><h3>Chromaligner Overview</h3></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Chromaligner is a tool for chromatogram alignment. 
+It could be used for chromatograms generated by various chromatographic methods such as high performance 
+liquid chromatography and capillary electrophoresis. Time shift is a frequently encountered problem in gradient
+ elution or capillary electrophoresis. Chromaligner used a constrained chromatogram alignment method to resolve 
+ this issue. 
+</p>
+<p>
+Chromaligner aligns chromatograms based on correlation optimized warping (COW) with optional alignment on 
+predefined peaks. The inputs of Chromaligner include a set of chromatograms comprising intensity, retention time
+ and constraints if there are any. The constraints are the common user-defined peaks (or spike peaks) or 
+ automatically assigned by Chromaligner by mapping the full spectrum. The outputs files from Chromaligner are 
+ aligned chromatograms along with overlaid spectrum (before and after alignment).
+ <br></br>
+<br></br>
+ </p>
+
+
+<a name="Req_Files"><h3>Required files for Chromaligner</h3></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+
+<p>
+Chromaligner aligns chromatograms based on correlation optimized warping with optional alignment on predefined peaks.
+It provides four different alignment methods to predefine peaks. Different method has its 
+unique procedure
+for alignment. 
+All procedure requires three types of files, <a href="#File_Des">an index file</a>,
+<a href="#Raw_Prepare">raw data files</a> and
+<a href="#Acq">parameter files </a>.
+All the required files must be in the ".txt" <a href="#Extension">extension</a>.
+</p>
+<p>
+The following figure shows a example folder containing all the
+required files for Chromaligner :<br></br>
+
+<img alt="All files" style="text-align:left" src="all_files.jpg" />
+</p>
+<br></br>
+<br></br>
+
+
+<a name="Extension"><h2>File Extension</h2>
+</a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+The Chromaligner reads full-scan data(Ex: CE, HPLC) in 
+<b><span style="color:black">tab delimited format (Text file type, extension: txt)</span></b>
+</p><p>
+Different instruments generate different output file formats, and most of them have special extensions  such as are, asc etc. 
+These files can usually be opened by Microsoft office Excel.
+<a href="#convert">Click to see how to save raw data as a "txt" file.</a>
+<br></br>
+<br></br>
+</p>
+
+<a name="Raw_Prepare"><h2>Preparing RAW data for different alignment methods:</h2></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Chromaligner provides four different alignment methods: 
+	alignment without any constraints, alignment with user-specified peaks,	alignment in different segments, 
+	alignment with diode array detector.
+	Different methods require different raw files.
+</p>
+<p>
+First three methods require <a href="#RTI_Def">retention time to intensity file</a> as raw data. 
+Fourth method, alignment with diode array detector requires <a href="#RAW_DATA_Format3">DAD file</a>. 
+Chromaligner only accept <b><span style="color:black">tab delimited files(Text file type, extension: txt)</span></b>.
+<a href="#convert">Click to see how to save raw data as a "txt" file.</a></p>
+<br></br>
+<br></br>
+
+<a name="RAW_DATA_Format1"><h4>Alignment without any constraints</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+    
+The files required in this method are the 
+<a name="RTI_Def"><b>retention time to intensity files</b></a>. 
+In each file, each row represents a retention time (machine time frame) and the column represents 
+the corresponding intensity. The direct output from the instrument may look like the following figure:
+<br></br>
+<img alt="sample with descriptions" src="sample-desint.jpg"/><br></br><br></br>
+
+</p>
+<p>
+The only information needed is the intensity. <b><span style="color:black">Delete the descriptions
+ in the file before saving the files into txt format</span></b>.
+The processed files should look similar to the following figure:<br></br>
+<img src="sample-int.jpg"  /><br></br>
+</p>
+<p>
+<b><span style="color:black">The "first column" should always contains the intensities</span></b> 
+extra columns may be added by the users in the files.
+However, extra columns will not be used by Chromaligner. 
+The following figure shows the flexibility:<br></br>
+	<img src="sample-intoth.jpg" /><br></br>
+</p>
+<br></br>
+<br></br>
+
+
+
+<a name="RAW_DATA_Format2"><h4>Auto alignment with user-specified peaks</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+
+<p>
+The files required in this method are the same <b>retention time to intensity files</b> 
+as in the&nbsp; method "alignment without any constraints".
+<a href="#RAW_DATA_Format1">Click to see the details.</a>
+<br></br>
+<br></br>
+</p>
+
+
+
+<a name="RAW_DATA_Format3"><h4>Auto alignment in different segments</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+The files required in this method are the same <b>retention time to intensity files</b>
+as in the method "alignment without any constraints".
+<a href="#RAW_DATA_Format1">Click to see the details.</a>
+<br></br>
+<br></br>
+</p>
+
+<a name="RAW_DATA_Format4"><h4>Auto alignment with diode array detector data</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+The files required in this method are <a name="#DAD_Def"><b>DAD files</b></a>.
+It looks like the following figure:<br></br>
+<img src="h_position_of_wave.jpg" />
+<br></br>
+<br></br>
+</p>
+
+<a name="Acq"><h3>Preparing parameter files for different alignment methods:</h3></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Parameter file contains information of the starting and the ending time as well as the 
+predefined peaks in time (min).
+</p>
+<p>
+To eliminate unwanted sections at the beginning and the end of each chromatogram 
+where noises are located, users must specify the <a name="Starting_point">starting</a> and 
+<a name="Ending_point">ending time</a> in the parameter files (<a href="#SE_Example">Click here to see an example</a>).
+Each parameter file corresponds to each chromatogram. 
+If you wish to specify same starting and ending time for all your chromatograms, 
+you may do so at the webpage by selecting the checkbox. 
+<a href="#SSSE_Example">Click to see where to check the option</a>. 
+
+</p>
+<br></br>
+<br></br>
+
+<a name="TIME_FileFormat"><h4>Parameter file format</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+A complete parameter file should contain three information
+<b><span style="color:black">in the order of </span></b>
+<a href="#SE_Example">the starting time</a>,
+ the time points of predefined peaks and 
+<a href="#SE_Example"> the ending time</a>.
+The default time unit of measurement<b><span style="color:black"> is minutes</span></b>.
+See the following figure for the content in a parameter file:<br></br></p>
+<img alt="the content of a parameter file" src="Topt0.jpg"/>
+
+<br></br>
+<p>
+Different alignment method may require different inputs in the parameter files, 
+please see parameter setting under each alignment method below. </p>
+<br></br>
+<br></br>
+
+<a name="TIME_NameRule"><h4>Naming rules</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Each chromatogram should have its parameter files to better adjust the peak shifts in each chromatogram. </p><p>
+For each parameter file, <b><span style="color:black">append ‘P’ (in capital) before the corresponding 
+raw data file name.</span></b>
+For example, a parameter file should be named as <span style="color:black">"P980108-2.txt"</span>
+ for a raw data file named <span style="color:black">"980108-2.txt"</span>.
+</p>
+<br></br>
+<br></br>
+
+<a name="Time_Interval_Format1"><h4>Alignment without any constraints</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+This method uses the original correlation optimize warping alignment,
+ no predefined peaks are needed. There are many ways to specify the starting and ending time of each chromatogram. Graphical tutorials are as follows:</p>
+
+ <p>&nbsp;</p>
+
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;"> 
+Users can either choose to specify the starting and ending time of all chromatogram at once 
+in Chromaligner webpage interface without preparing any parameter files, </li>
+<p style="line-height: 5px;"></p>
+<img alt="specification 3" src="opt3.jpg"/><br></br>
+</ol>
+<br></br>
+
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;">
+Or users can specify each starting and ending time of each chromatograms 
+in the corresponding parameter files. In this case, leave all the option box unchecked. </li>
+<p style="line-height: 5px;"></p>
+<img alt="no specification" src="opt0.jpg"/><br></br>
+<img alt="no specification" src="Topt0_nopeaks.jpg"/><br></br>
+</ol>
+<br></br>
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;">
+You can choose to specify same the starting time for all chromatograms in
+ the Chromaligner webpage interface,</li>
+<p style="line-height: 5px;"></p>
+
+<img alt="specification 1" src="opt2.jpg"/><br></br>
+and prepare the corresponding parameter file containing different ending time information of each 
+chromatogram as  follows:<br></br>
+
+<img alt="specification 1" src="Topt2_nopeaks.jpg"/>
+</ol>
+<br></br><br></br>
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;">
+You can choose to specify same the ending time for all chromatogram in the 
+Chromaligner webpage interface,</li>
+<p style="line-height: 5px;"></p>
+<img alt="specification 2" src="opt1.jpg"/><br></br>
+and prepare the corresponding parameter file containing different starting time information of each 
+chromatogram as  follows:<br></br>
+<img alt="specification 2" src="Topt1_nopeaks.jpg"/>
+</ol>
+<br></br>
+<br></br>
+
+
+
+<a name="Time_Interval_Format2"><h4>Auto alignment with user-specified peaks</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<p>
+This method takes the predefined peaks for raw data in each corresponding parameter file. 
+Users have to specify 
+<b><span style="color:black">at least one</span></b> predefined peak in each parameter file to use this method. 
+All predefined peaks must be specified in the parameter files (see following figures); 
+however, there are several ways to specify the starting and ending points of each 
+chromatogram.
+</p> <br></br>
+
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;">
+Users can either choose to specify the starting and ending time of 
+all chromatogram at once in Chromaligner webpage interface.  </li>
+<p style="line-height: 5px;"></p>
+<img alt="specification 3" src="opt3.jpg"/><br></br>
+<img alt="specification 3" src="Topt3.jpg"/>
+</ol>
+<br></br>
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;">
+Or users can specify each starting and ending time of each chromatograms 
+in the corresponding parameter files. In this case, leave all the option box unchecked. </li>
+<p style="line-height: 5px;"></p>
+<img alt="no specification" src="opt0.jpg"/><br></br>
+<img alt="no specification" src="Topt0.jpg"/>
+</ol>
+<br></br>
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;">
+You can choose to specify same the starting time for all 
+chromatograms in the Chromaligner webpage interface,</li>
+<p style="line-height: 5px;"></p>
+
+<img alt="specification 2" src="opt2.jpg"/><br></br>
+and prepare the corresponding parameter file containing different ending time information 
+of each chromatogram as follows:<br></br>
+
+<img alt="specification 2" src="Topt1.jpg"/>
+</ol>
+<br></br>
+
+
+<ol style="margin:0px; font-size: 12pt; width:650px;">
+<li style="margin:0px; 	list-style-type:disc;">
+You can choose to specify same the ending point for all chromatogram 
+in the Chromaligner webpage interface,</li>
+<p style="line-height: 5px;"></p>
+<img alt="specification 1" src="opt1.jpg"/><br></br>
+and prepare the corresponding parameter file containing different starting time information 
+of each chromatogram as follows:<br></br>
+<img alt="specification 1" src="Topt2.jpg"/>
+</ol>
+<br></br><br></br>
+
+
+<a name="Time_Interval_Format3"><h4>Auto alignment in different segments</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<p>
+Users need to specify the number of segments through the web page. Chromaligner will find the 
+predefined peaks automatically. Parameter files setup is the same as in the method 
+“alignment without constraints”. <a href="#Time_Interval_Format1">Click here to see how.</a>
+</p>
+<br></br>
+
+<a name="Time_Interval_Format4"><h4>Auto alignment with diode array detector </h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<p>
+This method is similar to last method. After users specify some constraints through the web page, Chromaligner will find the predefined peaks automatically. Parameter files setup is the 
+same as in the method “alignment without constraints”. 
+<a href="#Time_Interval_Format1">Click here to see how.</a>
+</p>
+<br></br>
+<br></br>
+
+
+<a name="File_Des"><h3>Index file</h3></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+<a href="#Index_FileFormat">An index file</a> gives a complete list of raw data file. 
+Chromaligner automatically checks whether the raw data and the corresponding parameter files 
+were uploaded successfully. 
+</p>
+<br></br>
+<br></br>
+
+<a name="Index_FileFormat"><h4>File format and naming rules</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Users must list all file names in an index file entitled “index.txt”. 
+The first row in the index file is the title of each column. The 
+<b><span style="color:black">first column </span></b>
+has to be the <b><span style="color:black">raw data files' names </span></b>
+you uploaded. You may also specify names for each file as in 
+the following figure. 
+</p>
+<p> 
+ <b><span style="color:black">Note: each column can be separated by "tab" or "space", 
+ but Chromaligner does not accept any space or tab in the file name.</span></b>
+ </p>
+<img alt="A file list" src="filelist.jpg" /><br></br><br></br><br></br>
+
+<a name="Prepare_ForRun"><h2>Preparation for running Chromaligner</h2></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+To simplify the process, users have to archive all required files, index file, 
+raw data files, and corresponding parameter files, in 
+<span style="color:black"><b>ONE</b></span> ZIP file before uploading the zip file to 
+Chromaligner. ZIP is an archive file format to reduce the file size for uploading. 
+Chromaligner does <span style="color:black"><b>not</b></span> accept files in RAR format. 
+</p>
+<br></br>
+<br></br>
+
+<a name="UP_Archive"><h4>Archive required files in the ZIP files</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+To archive all files in the zip format, we suggest the following steps. 1) put index file, 
+raw data files, and corresponding parameter files in into one folder, 2) select all 
+the files and right-click on one of the files. 3) if you have ZIP program installed, you 
+can see the “extract” function on your the right-click list; If you don’t have zip program 
+installed, Windows do have an built-in ZIP archiver in your computer. 
+To download a zip program, click here. </p>
+
+<p>
+The following figure shows how to archive files to one ZIP file by the Windows default ZIP archiver. 
+</p>
+<img alt="Compression" src="upload-compress.jpg"/><br></br>
+<p>
+Please archive the files directly into a <span style="color:black"><b>ZIP</b></span> 
+file without the folder. 
+</p>
+<br></br>
+<br></br>
+
+<a name="EX_UI_Setting"><h3>Example files and Chromaligner webpage interface settings</h3></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Chromaligner webpage interface has different input forms to be filled with each alignment method.
+In this section, we provide some example files and graphical tutorials for users.
+</p>	
+<br></br>
+<br></br>		
+
+<a name="EX_1"><h4>Alignment without any constraints</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+We provide an example of aligning two sample files with a target file without any constraints.
+Samples include the target file and sample files to be aligned, so the number of samples is 3.
+The instrument sampling frequency is 2 data points per second.
+We specify same the starting time 1.5 minutes for all the chromatograms.
+And we prepare the corresponding parameter file containing different ending time information of each chromatogram.
+</p>
+<p>
+The target file name is "980108-2.txt".
+The file names of samples to be aligned are "980117-2.txt" and "980116-3.txt".
+Users don't have to specify the file names of samples to be aligned in the webpage interface
+but the target file name is required.
+</p>
+<p>
+The following figure shows how to set the parameters in the webpage interface for the example 
+as we described:
+</p>
+<img alt="example of alignment without any constraints" src="Ex_1.jpg" />
+<br></br>
+
+<p>
+<a href="example1.zip">Please click here to download the upload example file</a> 
+and click on the "Browse" button to upload this file.
+After filling the forms in the webpage interface, uploading the example file and clicking on the "Submit" button,
+users are ready to run Chromaligner.
+</p>
+<br></br>
+<br></br>
+
+<a name="EX_2"><h4>Auto alignment with user-specified peaks</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+We provide an example of aligning two sample files with a target file with user-specified peaks.
+Samples include the target file and sample files to be aligned, so the number of samples is 3.
+We use 4 user-specified peaks as constraints to do alignment, specify the time points of these peaks in the
+corresponding parameter files.
+The instrument sampling frequency is 2 data points per second.
+We specify each starting and ending time of each chromatogram in the corresponding parameter file and
+leave all the option box unchecked. 
+</p>
+<p>
+The target file name is "980108-2.txt".
+The file names of samples to be aligned are "980117-2.txt" and "980116-3.txt".
+Users don't have to specify the file names of samples to be aligned in the webpage interface
+but the target file name is required.
+</p>
+<p>
+The following figure shows how to set the parameters in the webpage interface for the example 
+as we described:
+</p>
+
+<img alt="example of alignment without any constraints" src="Ex_2.jpg" />
+<br></br>
+<p>
+<a href="example2.zip">Please click here to download the upload example file</a>
+and click on the "Browse" button to upload this file.
+After filling the forms in the webpage interface, uploading the example file and clicking on the "Submit" button,
+users are ready to run Chromaligner.
+</p>
+<br></br>
+<br></br>
+
+<a name="EX_3"><h4>Auto alignment in different segments</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+We provide an example of aligning two sample files with a target file in different segments.
+Samples include the target file and sample files to be aligned, so the number of samples is 3.
+We define the <a href="#NS_Example">number of segements to be aligned</a> is 3.
+The instrument sampling frequency is 2 data points per second.
+We specify same the ending time 21 minutes for all the chromatograms and
+prepare the corresponding parameter file containing different starting time information of each chromatogram.
+</p>
+<p>
+The target file name is "980108-2.txt".
+The file names of samples to be aligned are "980117-2.txt" and "980116-3.txt".
+Users don't have to specify the file names of samples to be aligned in the webpage interface
+but the target file name is required.
+</p>
+<p>
+The following figure shows how to set the parameters in the webpage interface for the example 
+as we described:
+</p>
+<img alt="example of auto alignment in different segments" src="Ex_3.jpg" />
+<br></br>
+<p>
+<a href="example3.zip">Please click here to download the upload example file</a>
+and click on the "Browse" button to upload this file.
+After filling the forms in the webpage interface, uploading the example file and clicking on the "Submit" button,
+users are ready to run Chromaligner.
+</p>
+<br></br>
+<br></br>
+
+<a name="EX_4"><h4>Auto alignment with diode array detector data</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+We provide an example of aligning two sample files with a target file with user-specified peaks.
+Samples include the target file and sample files to be aligned, so the number of samples is 3.
+We define the <a href="#NS_Example">number of segments to be aligned</a> is 3.
+The <a href="#TL_Example">total line number as the descriptions in the DAD files</a> is 19.
+We choose 10 to be the <a href="#LNW_Example">line number for WAVETABLE in the DAD files</a>
+and 210 to be the <a href="#WL_Example">wave length to be used for alignment</a>. 
+The instrument sampling frequency is 1 data point per 0.64 second. We specify 
+the same starting time 0 minute and the same ending time 20.6 minutes for all the chromatograms.
+</p>
+<p>
+The target file name is "sample01.txt".
+The file names of samples to be aligned are "sample02.txt" and "sample03.txt".
+Users don't have to specify the file names of samples to be aligned in the webpage interface
+but the target file name is required.
+</p>
+<p>
+The following figure shows how to set the parameters in the webpage interface for the example 
+as we described:
+</p>
+
+
+<img alt="example of auto alignment  with diode array detector data" src="Ex_4.jpg" />
+<br></br>
+
+<p>
+<a href="example4.zip">Please click here to download the upload example file</a>
+and click on the "Browse" button to upload this file.
+After filling the forms in the webpage interface, uploading the example file and clicking on the "Submit" button,
+users are ready to run Chromaligner.
+</p>
+<br></br>
+<br></br>
+
+  						    	
+
+<a name="Output"><h2>Chromaligner export files</h2></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Chromaligner exports three different files : retention to intensity files, 
+chromatograms and full data.
+</p>
+<p>
+After users click the button "Start to run Chromaligner" and the progress bar is complete,
+Chromaligner will show a result page as follows:
+</p>
+<img alt="result page" src="result.jpg"/>
+<br></br><br></br>
+
+<a name="RTI_files"><h4 >Retention time to intensity files after alignment</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Users can download <a href="#RTI_Def">retention time to intensity files</a> from clicking the first link as the following figure:
+</p>
+<img alt="result page1" src="result1.jpg"/>
+<br></br>
+<p>
+The download file is a ZIP file containing all the raw data after alignment as the following figure:
+</p>
+<img alt="downloadfiles1" src="downloadfiles1.jpg"/>
+<br></br>
+<p>
+No matter whether the raw data are <a href="#DAD_Def">DAD files</a> or 
+<a href="#RTI_Def">retention time to intensity files</a>,
+the aligned files are all transformed into <a href="#RTI_Def">retention time to intensity files</a>.
+For each <a href="#RTI_Def">retention time to intensity files</a> after alignment, we append "-processed" after the corresponding original
+raw data file name. 
+</p>
+<p>
+After extracting the download ZIP file, the content of the extracted folder should look like the following figure:
+</p>
+<img alt="download retention time to intensity files" src="download_RTI.jpg"/>
+<br></br>
+<p>
+You can open these aligned files with Microsoft Excel. Graphical tutorials are as follows:
+</p>
+<img alt="open retention time to intensity files with Excel" src="download_openRTI.jpg"/>
+<br></br>
+<img alt="contents of retention time to intensity files" src="download_contentRTI.jpg"/>
+<br></br><br></br>
+
+<a name="Chromatogram"><h4 >Chromatograms (before and after alignment)</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Users can download chromatograms from clicking the second link as the following figure:
+</p>
+<img alt="result page2" src="result2.jpg"/>
+<br></br>
+<p>
+The download file is a ZIP file containing all the chromatograms (before and after alignment) as the following figure:
+</p>
+<img alt="downloadfiles2" src="downloadfiles2.jpg"/>
+<br></br>
+<p>
+Chromatograms exported from Chromaligner are image files with extension ".png".
+The file names of chromatograms before alignment are the same as their
+corresponding raw data file names.
+And for each chromatogram after alignment, Chromaligner append &quot;-processed&quot; 
+after the corresponding raw data file name.
+</p>
+<p>
+After extracting the download ZIP file, the content of the extracted folder should look like the following figure:
+</p>
+<img alt="chromatogram files" src="chromatograms.jpg"/>
+<br></br>
+<p>
+You can open these chromatograms with any software supporting ".png" file extension. 
+The following figure is an example for opening a chromatogram before alignment with 
+"Windows Picture and Fax Viewer" (a software embedded in Microsoft system):
+
+</p>
+<img alt="chromatograms before alignment" src="chromatograms_before.jpg"/>
+<br></br>
+<p>
+Each image file contains two lines with different colors: one is the chromatogram of the target file
+and the other one is the chromatogram of the&nbsp; sample to be aligned.
+Users can observe the peak shifting between the target and sample intuitively through the image file.
+</p>
+<p>
+The upper right corner is a legend with three information: 1) target file name and its
+corresponding colors in the chromatogram, 
+2) file name of the sample to be aligned and its corresponding colors in the chromatogram 
+and&nbsp; 3) 
+Pearson correlation coefficient between the target and the sample data.
+</p>
+<br></br><br></br>
+
+
+<a name="FULL_Data"><h4 >Full data</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Full data include 
+<a href="#RTI_files">retention time to intensity files after alignment </a>
+and <a href="#Chromatogram">chromatograms (before and after alignment)</a>.
+Users can download the full data from clicking the last link as the following figure:
+</p>
+<img alt="result page3" src="result3.jpg"/>
+<br></br>
+<p>
+The download file is a ZIP file containing full data as the following figure:
+</p>
+<img alt="downloadfiles3" src="downloadfiles3.jpg"/>
+<br></br>
+<p>
+After extracting the download ZIP file, the content of the extracted folder should 
+contain two folders which looks  like the following figure:
+</p>
+<img alt="fulldata" src="fulldata.jpg"/>
+<br></br>
+<p>
+The contents of "aligned_retentiontime_file" folder are 
+<a href="#RTI_files">retention time to intensity files after alignment</a>. 
+The contents of &quot;chromatograms&quot; folder are 
+<a href="#Chromatogram">chromatograms (before and after alignment)</a>.
+</p>
+<br></br><br></br>
+
+
+<a name="FAQs"><h2>FAQs</h2></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+In this section, we include some examples and tips for operation. </p>
+<br></br>
+<br></br>
+
+<a name="convert"><h4 >How to convert a file to txt format ?</h4></a>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<p>
+Here is an example to use Microsoft Excel to convert a file to TXT file format. 
+</p>
+<p>
+Launch Excel, choose "File" and then "Open" option as follows:
+</p>
+<img alt="save as a new file" src="open1.jpg"  /><br></br><br></br>
+<p>
+Change the "File of types" option on at the bottom of the window into "All Files" 
+and select the file you want to convert. </p>
+<img alt="save as a new file" src="open2.jpg"  /><br></br><br></br>
+<p>
+If the file was opened successfully, it should look like the following figure. 
+In this example, it is a raw data file containing <a href="#RTI_Def">retention time to intensity</a> information. 
+</p>
+<img alt="save as a new file" src="open3.jpg"  /><br></br><br></br>
+<p>
+Now, click "File" on the upper left corner again and use "Save as" option. Click the "File 
+of types" into "Text"(tab delimited), then the "Save" button and it is done! </p>
+<img alt="save as a new file" src="saveas.jpg"  /><br></br><br></br>
+<img alt="save as a new file" src="saveastype.jpg"  /><br></br><br></br>
+<br></br>
+
+<h4 >How to specify time points for all chromatograms 
+at once ?</h4>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<a name="SSSE_Example"><img alt="Specify same starting and ending time" src="webpage.jpg" /></a>
+<br></br>
+<br></br>
+<br></br>
+
+<h4 >What is the &quot;number of spike-peaks&quot; ?</h4>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<a name="NSP_Example"><img alt="Number of spike-peaks" src="h_number_spikes.jpg" /></a>
+<br></br>
+<br></br>
+<br></br>
+
+<h4 >What is the &quot;number of segments to be aligned&quot; ?</h4>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<a name="NS_Example"><img alt="Number of segments to be aligned" src="h_number_segment.jpg" /></a>
+<br></br>
+<br></br>
+<br></br>
+
+
+<h4 >What is the &quot;total line number as the description in the DAD files&quot; 
+?</h4>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<a name="TL_Example"><img alt="Total line number as description in the DAD files" src="Total_line_number.jpg" /></a>
+<br></br>
+<br></br>
+<br></br>
+
+
+
+<h4 >What is the &quot;line number for WAVETABLE in the DAD files&quot; 
+?</h4>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<a name="LNW_Example"><img alt="line number for WAVETABLE in the DAD files" src="h_position_of_wave.jpg" /></a>
+<br></br>
+<br></br>
+<br></br>
+
+
+<h4 >What is the &quot;wave length to be used for alignment&quot; 
+?</h4>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<a name="WL_Example"><img alt="wave length for alignment" src="wave_length.jpg" /></a>
+<br></br>
+<br></br>
+<br></br>
+
+<h4 >What is the starting time and ending time in a 
+chromatogram</h4>
+<a href="#top"><img alt="Go back to the top" src="top.gif"  class="top" /></a>
+<br></br>
+<a name="SE_Example"><img alt="Starting point and Ending point" src="Start_End.jpg" /></a>
+<br></br>
+<br></br>
+
+
+
+</body></html>
